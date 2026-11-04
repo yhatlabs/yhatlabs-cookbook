@@ -1,37 +1,35 @@
-# YHat Labs
+# YHat Labs Cookbook
 
-Foundation AI models for tabular data, served through a hosted API. Send your data, get predictions back in one call, no training or tuning.
+Runnable recipes for the YHat Labs models: **ChakraTS** for time-series forecasting and **ChakraTab** for prediction on
+tables. Each recipe is a notebook on public or synthetic data that runs with only an API key.
 
-| Model | What it does | Card | Access |
-|---|---|---|---|
-| **ChakraTS** | Zero-shot probabilistic time-series forecasting: nine quantiles per step, known-future covariates, any regular frequency | https://huggingface.co/yhatlabs/ChakraTS | API |
-| **ChakraTab** | Classification and regression on tables, with class probabilities | https://huggingface.co/yhatlabs/ChakraTab | API |
-| **ChakraTS-Lab** | Research configuration of ChakraTS, benchmark entries only | https://huggingface.co/yhatlabs/ChakraTS-Lab | evaluation on request |
+```bash
+pip install -U "yhatlabs[plot]"
+export YHAT_API_KEY=...    # https://yhatlabs.com/models
+```
 
-Website and results: https://yhatlabs.com/models · API access: https://yhatlabs.com/models/access
+## Recipes
 
-## Benchmark standing (October 2026)
+### Forecasting
 
-| Benchmark | Model | Standing | Status |
-|---|---|---|---|
-| [fev-bench](https://huggingface.co/spaces/autogluon/fev-bench) (Amazon) | ChakraTS | 1st by win rate (85.5%), 2nd by skill score | merged, [autogluon/fev #192](https://github.com/autogluon/fev/pull/192) |
-| [TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard) (ICML 2026) | ChakraTS | 2nd of 31 | published, [Real-TSF/TIME-Output PR #46](https://huggingface.co/datasets/Real-TSF/TIME-Output/discussions/46) |
-| [GIFT-Eval](https://huggingface.co/spaces/Salesforce/GIFT-Eval) (Salesforce) | ChakraTS | 3rd among non-agentic models (MASE 0.670, CRPS 0.461) | merged, [gift-eval #225](https://github.com/SalesforceAIResearch/gift-eval/pull/225) |
-| [TabArena](https://tabarena.ai) | ChakraTab | top 5 | under review |
+| Recipe | What you learn |
+|---|---|
+| [Forecasting with ChakraTab: drivers as columns](recipes/forecasting/forecasting_with_chakratab.ipynb) | Forecast daily series as a table of known drivers (paydays, promotions, calendar), compare with ChakraTS and their average in a backtest, and read each driver's effect |
 
-Every entry is zero-shot under the benchmark's official protocol; benchmark data is never used for anything other than scoring.
+More recipes are on the way: tuning ChakraTS on your own series, known and past drivers, backtesting and calibration,
+anomalies, prediction on tables with intervals and explanations.
 
-## Contents
+## Benchmarks
 
-- `benchmarks/` result files exactly as submitted to the leaderboards.
-  - `fev_bench/ChakraTS/chakrats_api.csv`: the [fev](https://github.com/autogluon/fev) summary file (100 tasks, SQL, MASE, WAPE, WQL per task).
-  - `gift_eval/<entry>/all_results.csv` + `config.json`: [GIFT-Eval](https://github.com/SalesforceAIResearch/gift-eval) format, 97 dataset configurations.
-  - TIME per-task predictions (93 MB of `.npz`) live in the TIME dataset repository linked above.
-- `notebooks/`
-  - `gift_eval_reproduce.ipynb`: regenerates the GIFT-Eval `all_results.csv` by calling the API (official `gift_eval` data loading and `gluonts` metrics). Run it from the `notebooks/` folder of the [gift-eval](https://github.com/SalesforceAIResearch/gift-eval) repository; it starts with a quick subset and prints each rerun next to the submitted row. Needs an API key; evaluation keys are issued on request.
+[`benchmarks/`](benchmarks/) holds our leaderboard submissions (fev-bench, GIFT-Eval) and a notebook that reproduces them.
 
-Coming here next: head-to-head results against classical methods (seasonal naive, ETS, ARIMA, LightGBM, CatBoost, tuned gradient boosting) on public industry datasets, as shown on the website, and a Python client (`pip install yhatlabs`).
+## Learn more
+
+- Documentation: https://yhatlabs.com/models/docs
+- Python library: https://github.com/yhatlabs/yhatlabs-python
+- Models: https://yhatlabs.com/models
 
 ## License
 
-The code and result files in this repository are released under the [Apache License 2.0](LICENSE). The models are not distributed; they are served through the API under the [YHat Labs terms](https://yhatlabs.com/terms).
+The code and result files in this repository are released under the [Apache License 2.0](LICENSE). The models are not
+distributed; they are served through the API under the [YHat Labs terms](https://yhatlabs.com/terms).
