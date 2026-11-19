@@ -21,7 +21,29 @@ anomalies, prediction on tables with intervals and explanations.
 
 ## Benchmarks
 
-[`benchmarks/`](benchmarks/) holds our leaderboard submissions (fev-bench, GIFT-Eval) and a notebook that reproduces them.
+ChakraTS is the best model across forecasting benchmarks.
+
+### Benchmark standing (as of November 2026)
+
+**ChakraTS** (time-series forecasting)
+
+| Benchmark | Standing | Result | Leaderboard |
+|---|---|---|---|
+| fev-bench (Amazon) | 1st by win rate | Win rate 89.3%, skill score 51.3 | [fev-bench](https://huggingface.co/spaces/autogluon/fev-leaderboard) |
+| GIFT-Eval (Salesforce) | 2nd among non-agentic models | MASE 0.644 | [GIFT-Eval](https://huggingface.co/spaces/Salesforce/GIFT-Eval) |
+| TIME | 1st by MASE rank | MASE 0.624, CRPS 0.523 | [TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard) |
+
+GIFT-Eval and TIME scores are normalized by Seasonal Naive (lower is better).
+
+**ChakraTab** (prediction on tables)
+
+| Benchmark | Standing | Leaderboard |
+|---|---|---|
+| TabArena | 3rd | [TabArena](https://huggingface.co/spaces/TabArena/leaderboard) |
+| STRABLE (Inria) | 2nd by score | [STRABLE](https://soda-inria.github.io/strable) |
+| RamanBench (HTW Berlin) | 3rd | [RamanBench](https://huggingface.co/spaces/HTW-KI-Werkstatt/RamanBench) |
+
+[`benchmarks/`](benchmarks/) has the ChakraTS results as submitted and how to reproduce them.
 
 ## Learn more
 
