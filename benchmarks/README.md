@@ -1,23 +1,20 @@
 # Benchmarks
 
-Results of the Chakra models on public leaderboards, as submitted, and how to reproduce them. These files date from
-before the Python library (`pip install yhatlabs`); the reproduction notebook calls the API directly.
-
-## Benchmark standing (October 2026)
-
-| Benchmark | Model | Standing | Status |
-|---|---|---|---|
-| [fev-bench](https://huggingface.co/spaces/autogluon/fev-bench) (Amazon) | ChakraTS | 1st by win rate (85.5%), 2nd by skill score | merged, [autogluon/fev #192](https://github.com/autogluon/fev/pull/192) |
-| [TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard) (ICML 2026) | ChakraTS | 2nd of 31 | published, [Real-TSF/TIME-Output PR #46](https://huggingface.co/datasets/Real-TSF/TIME-Output/discussions/46) |
-| [GIFT-Eval](https://huggingface.co/spaces/Salesforce/GIFT-Eval) (Salesforce) | ChakraTS | 3rd among non-agentic models (MASE 0.670, CRPS 0.461) | merged, [gift-eval #225](https://github.com/SalesforceAIResearch/gift-eval/pull/225) |
-| [TabArena](https://tabarena.ai) | ChakraTab | top 5 | under review |
-
-Every entry is zero-shot under the benchmark's official protocol; benchmark data is never used for anything other than scoring.
+ChakraTS results on public forecasting leaderboards, as submitted, and how to reproduce them. The standings are in the
+[main README](../README.md#benchmark-standing-as-of-november-2026). The results use the `chakra-ts` model with its
+`pro` preset, the same model the API serves.
 
 ## Files
 
-- Result files exactly as submitted to the leaderboards.
-  - `fev_bench/ChakraTS/chakrats_api.csv`: the [fev](https://github.com/autogluon/fev) summary file (100 tasks, SQL, MASE, WAPE, WQL per task).
-  - `gift_eval/<entry>/all_results.csv` + `config.json`: [GIFT-Eval](https://github.com/SalesforceAIResearch/gift-eval) format, 97 dataset configurations.
-  - TIME per-task predictions (93 MB of `.npz`) live in the TIME dataset repository linked above.
-- `gift_eval/reproduce.ipynb`: regenerates the GIFT-Eval `all_results.csv` by calling the API (official `gift_eval` data loading and `gluonts` metrics). Run it from the `notebooks/` folder of the [gift-eval](https://github.com/SalesforceAIResearch/gift-eval) repository; it starts with a quick subset and prints each rerun next to the submitted row. Needs an API key; evaluation keys are issued on request.
+- `fev_bench/ChakraTS/chakrats_api.csv`: the [fev](https://github.com/autogluon/fev) summary file (100 tasks).
+- `gift_eval/ChakraTS/`: `all_results.csv` and `config.json` in the [GIFT-Eval](https://github.com/SalesforceAIResearch/gift-eval) format (97 configurations).
+- `time/ChakraTS/`: the [TIME](https://github.com/zqiao11/TIME) submission, `config.json`, `metrics.npz` and `predictions.npz` for each of the 98 tasks, written with TIME's own evaluation code.
+- `gift_eval/ChakraTS-Lab/`: our October 2026 GIFT-Eval entry for ChakraTS-Lab, unchanged.
+
+## Reproduce
+
+Each needs an API key (`YHAT_API_KEY`).
+
+- **fev-bench:** the wrapper in the fev repository, [`models/chakrats_api/model.py`](https://github.com/autogluon/fev/tree/main/models/chakrats_api), runs any task through the API.
+- **GIFT-Eval:** [`gift_eval/reproduce.ipynb`](gift_eval/reproduce.ipynb) (also `notebooks/ChakraTS.ipynb` in the [gift-eval](https://github.com/SalesforceAIResearch/gift-eval) repository). Run it from that repository's `notebooks/` folder; its quick mode reruns 13 configurations in a few minutes and prints each result next to the submitted row.
+- **TIME:** `scripts/compute_local_leaderboard.py` in the [TIME](https://github.com/zqiao11/TIME) repository scores `time/ChakraTS/` (copied to its `output/results/`) against Seasonal Naive.
