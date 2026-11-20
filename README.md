@@ -31,7 +31,7 @@ ChakraTS is the best model across forecasting benchmarks.
 |---|---|---|---|
 | fev-bench (Amazon) | 1st by win rate | Win rate 90.1%, skill score 51.4 | [fev-bench](https://huggingface.co/spaces/autogluon/fev-leaderboard) |
 | GIFT-Eval (Salesforce) | 2nd among non-agentic models | MASE 0.640 | [GIFT-Eval](https://huggingface.co/spaces/Salesforce/GIFT-Eval) |
-| TIME | 1st by MASE rank | MASE 0.624, CRPS 0.523 | [TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard) |
+| TIME | 1st by MASE rank | MASE 0.623, CRPS 0.522 | [TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard) |
 
 GIFT-Eval and TIME scores are normalized by Seasonal Naive (lower is better).
 
