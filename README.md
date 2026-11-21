@@ -43,7 +43,7 @@ GIFT-Eval and TIME scores are normalized by Seasonal Naive (lower is better).
 | STRABLE (Inria) | 2nd by score | [STRABLE](https://soda-inria.github.io/strable) |
 | RamanBench (HTW Berlin) | 3rd | [RamanBench](https://huggingface.co/spaces/HTW-KI-Werkstatt/RamanBench) |
 
-[`benchmarks/`](benchmarks/) has the ChakraTS results as submitted and how to reproduce them.
+[`benchmarks/`](benchmarks/) has the ChakraTS and ChakraTS-OS-10M results as submitted and how to reproduce them.
 
 ## Learn more
 
@@ -53,5 +53,7 @@ GIFT-Eval and TIME scores are normalized by Seasonal Naive (lower is better).
 
 ## License
 
-The code and result files in this repository are released under the [Apache License 2.0](LICENSE). The models are not
-distributed; they are served through the API under the [YHat Labs terms](https://yhatlabs.com/terms).
+The code and result files in this repository are released under the [Apache License 2.0](LICENSE). ChakraTS and
+ChakraTab are served through the API under the [YHat Labs terms](https://yhatlabs.com/terms). The weights of
+[ChakraTS-OS-10M](https://huggingface.co/yhatlabs/ChakraTS-OS-10M) are released under the Chakra Non-Commercial Model
+License.
