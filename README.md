@@ -6,6 +6,16 @@ results with how to reproduce them.
 [Website](https://yhatlabs.com) · [Docs](https://yhatlabs.com/models/docs) · [Get started](https://yhatlabs.com/models/signup) ·
 [Hugging Face](https://huggingface.co/yhatlabs)
 
+## Get started
+
+One notebook per model, from install to a scored result in a few minutes. Each one opens in Colab.
+
+| Notebook | What you do |
+|---|---|
+| [ChakraTS](getting-started/chakrats.ipynb) (API) | Forecast a week of electricity demand with ranges, check the model on past days, add what you know about the future, and fine-tune it |
+| [ChakraTab](getting-started/chakratab.ipynb) (API) | Predict credit risk with probabilities, compare with standard models, see which columns matter, and predict house prices with ranges |
+| [ChakraTS-OS-10M](getting-started/chakrats-os-10m.ipynb) (open weights) | The ChakraTS steps on your own machine, with [yhatmodels](https://github.com/yhatlabs/yhatmodels) |
+
 ## Recipes
 
 The recipes use our hosted models through the [Python library](https://github.com/yhatlabs/yhatlabs-python) and need an
