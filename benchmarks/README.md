@@ -18,5 +18,4 @@ early access its weights are gated: request access on the model page, then sign 
 
 Leaderboards: [fev-bench](https://huggingface.co/spaces/autogluon/fev-leaderboard) ·
 [GIFT-Eval](https://huggingface.co/spaces/Salesforce/GIFT-Eval) ·
-[TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard). `gift_eval/ChakraTS-Lab/` is our October 2026 GIFT-Eval
-entry, unchanged.
+[TIME](https://huggingface.co/spaces/Real-TSF/TIME-leaderboard).
